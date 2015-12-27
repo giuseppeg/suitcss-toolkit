@@ -249,7 +249,7 @@ select.Form-input {
   display: table-cell;
   margin-right: var(--Form-checkradio-gutter) !important; /* 1 */
   padding: 0;
-  width: auto !important;
+  width: auto !important; /* 1 */
 }
 
 /* postcss-bem-linter: ignore */
@@ -310,7 +310,7 @@ select.Form-input {
   white-space: nowrap;
 }
 
-.Form-field--fit:active,
+.Form-field--fit .Form-label:active,
 .Form-field--fit .Form-label:hover {
   max-width: none;
 }

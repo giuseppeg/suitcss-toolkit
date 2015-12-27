@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/giuseppeg/suitcss-components-form.png?branch=master)](http://travis-ci.org/giuseppeg/suitcss-components-form)
 
-A CSS form component. Provides general styling to build hightly composable and consistent forms.
+Component CSS for forms. Provides general styling to build hightly composable and consistent forms.
 
 Read more about [SUIT CSS](https://github.com/suitcss/suit/).
 
@@ -14,26 +14,26 @@ Read more about [SUIT CSS](https://github.com/suitcss/suit/).
 ## Features
 
 * Full-width forms
-* Fields adapt to the dimesions of an ancestral context
-* Simple Custom Select
-* Works with wrapping labels
 * Horizontal fluid forms
-* Collapsable labels that expand on hover
 * Inter-fields vertical spacing
+* Fields adapt to the dimensions of an ancestral context
+* Works with wrapping labels
+* Collapsable labels that expand on hover
+* Simple Custom Select
 * Basic validation states
 
 ## Available classes
 
-* `Form`: core component
-* `Form--horizontal`: horizontal forms
-* `Form--spaced`: adds spacing between form fields
-* `Form-field`: a form field container
-* `Form-field--checkbox`: checkbox input modifier
-* `Form-field--radio`: radio input modifier
-* `Form-label`: form label text
-* `Form-label--fit`: collapsable labels that expand on hover
-* `Form-input`: the actual form input
-* `Form-message`: an (optional) form message
+* `Form` core component
+* `Form--horizontal` horizontal forms
+* `Form--spaced` adds spacing between form fields
+* `Form-field` a form field container
+* `Form-field--checkbox` checkbox input modifier
+* `Form-field--radio` radio input modifier
+* `Form-label` form label text
+* `Form-label--fit` collapsable labels that expand on hover
+* `Form-input` the actual form input
+* `Form-message` an (optional) form message
 
 ## Use
 
@@ -51,7 +51,7 @@ form input, label and optionally a message.
 ```
 
 `Form-field` and `Form-message` can be grouped (wrapped) with `Form-inputWrapper`.<br>
-This is particularly useful to align them when making horizontal forms.
+This is particularly useful to align them with labels when making horizontal forms.
 
 ```html
 <form class="Form Form--horizontal" action="/" method="GET">
@@ -127,13 +127,14 @@ needed:
 
 When making horizontal forms and form labels are too long you have two options:
 
-* Let the label text wrap (default and suggested).
+* Let the label text wrap (default).
+* Avoid wrapping text (suggested solution – use an utility class).
 * Hide overflowing text and add ellipsis.
 
 The latter approach provides a bad UX because people can't expand and read the label text.
 
-**It is advised not to do so!** However if you will find yourself doing that use
-`Form-field--fit` which adds an expand on `hover` and `active` effect.
+**It is advised not to do so!** However if you still want to do this use
+`Form-field--fit` to add an expand on `hover` and `active` effect.
 
 ### Horizontal forms
 

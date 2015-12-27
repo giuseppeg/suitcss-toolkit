@@ -1,0 +1,37 @@
+{
+  "name": "suitcss-components-form",
+  "version": "0.1.0",
+  "license": "MIT",
+  "style": "index.css",
+  "files": [
+    "index.css",
+    "index.js",
+    "lib"
+  ],
+  "devDependencies": {
+    "stylelint-config-suitcss": "^1.0.0",
+    "suitcss-components-test": "*",
+    "suitcss-preprocessor": "^0.8.0",
+    "suitcss-utils-size": "^1.0.1"
+  },
+  "scripts": {
+    "build": "npm run setup && npm run preprocess",
+    "build-test": "npm run setup && npm run preprocess-test",
+    "preprocess": "suitcss index.css build/build.css",
+    "preprocess-test": "suitcss -i test test/test.css build/test.css",
+    "setup": "npm install",
+    "watch": "npm run preprocess-test -- -w -v",
+    "test": "suitcss -c test/config.json index.css build/output.css && rm build/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/giuseppeg/suitcss-components-form.git"
+  },
+  "keywords": [
+    "browser",
+    "css-components",
+    "form",
+    "suitcss",
+    "style"
+  ]
+}

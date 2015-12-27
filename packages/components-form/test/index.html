@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Form [component] - SUIT CSS</title>
+<meta name="viewport" content="initial-scale=1,width=device-width">
+<link rel="stylesheet" href="../build/test.css">
+<style>
+  .fixture-Box {
+    background: rgb(100, 150, 50);
+    background: rgb(100, 150, 50);
+    border: 1px solid black;
+    color: white;
+    margin-bottom: 10px;
+    min-height: 50px;
+  }
+
+  .Test {
+    padding: 0 10px;
+  }
+</style>
+
+<div class="Test">
+  <h1 class="Test-title">SUIT CSS: <a href="https://github.com/suitcss/components-form">Form</a> component tests</h1>
+
+  <h2 class="Test-describe">.Form</h2>
+  <h3 class="Test-it">renders full-width by default</h3>
+  <div class="Test-run">
+    <form class="Form" action="" method="GET">
+      <div class="fixture-Box">Empty form</div>
+    </form>
+  </div>
+  <h2 class="Test-describe">.Form-field</h2>
+  <h3 class="Test-it">renders full-width by default</h3>
+  <div class="Test-run">
+    <form class="Form Form--spaced" action="" method="GET">
+      <div class="Form-field">
+        <label class="Form-label" for="test1">Label</label>
+        <input class="Form-input" id="test1" type="text" placeholder="cats" required>
+        <p class="Form-message">A message</p>
+      </div>
+      <div class="Form-field">
+        <label class="Form-label" for="test1">Email</label>
+        <input class="Form-input" id="test1" type="email" placeholder="foo@b.ar">
+        <p class="Form-message">A message</p>
+      </div>
+      <div class="Form-field">
+        <label class="Form-label" for="test2">Date</label>
+        <input class="Form-input" id="test2" type="date">
+      </div>
+      <div class="Form-field">
+        <label class="Form-label" for="test3">Textarea</label>
+        <textarea class="Form-input" id="test3" placeholder="Howdy"></textarea>
+      </div>
+      <div class="Form-field">
+        <label class="Form-label" for="test4">Select</label>
+        <select class="Form-input" id="test4">
+          <option value="cat">cat</option>
+          <option value="cat">cat</option>
+          <option value="cat">cat</option>
+        </select>
+      </div>
+      <div class="Form-field">
+        <label class="Form-label" for="test5">Range</label>
+        <input class="Form-input" id="test5" type="range" name="quantity" min="1" max="10">
+      </div>
+      <div class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test8" type="checkbox" name="developers">
+        <label class="Form-label" for="test8">developers</label>
+      </div>
+      <label class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test9" type="checkbox" name="developers">
+        <span class="Form-label">developers</span>
+      </label>
+      <div class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test10" type="checkbox" name="developers">
+        <label class="Form-label" for="test10">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test11" type="radio" name="developers">
+        <label class="Form-label" for="test11">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test12" type="radio" name="developers">
+        <label class="Form-label" for="test12">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test13" type="radio" name="developers">
+        <label class="Form-label" for="test13">developers</label>
+      </div>
+      <div class="Form-field">
+        <span class="Form-button">
+          <button>Submit</button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <h3 class="Test-it">can be a label</h3>
+  <div class="Test-run">
+    <form class="Form" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <input class="Form-input" type="text" placeholder="cats">
+        <span class="Form-message">A message</span>
+      </label>
+    </form>
+  </div>
+
+  <h2 class="Test-describe">.Form--horizontal</h2>
+  <h3 class="Test-it">renders full-width and horizontal Form-field</h3>
+  <div class="Test-run">
+    <form class="Form Form--horizontal" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <input class="Form-input" type="text" placeholder="cats">
+      </label>
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">Another message</span>
+        </span>
+        <span class="Form-button"><button>Submit</button></span>
+      </label>
+      <label class="Form-field">
+        <span class="Form-label" for="test3">Textarea</span>
+        <textarea class="Form-input" id="test3" placeholder="Howdy"></textarea>
+      </label>
+      <div class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test14" type="checkbox" name="developers">
+        <label class="Form-label" for="test14">developers</label>
+      </div>
+      <div class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test15" type="checkbox" name="developers">
+        <label class="Form-label" for="test15">developers</label>
+      </div>
+      <div class="Form-field Form-field--checkbox">
+        <input class="Form-input" id="test16" type="checkbox" name="developers">
+        <label class="Form-label" for="test16">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test17" type="radio" name="developers">
+        <label class="Form-label" for="test17">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test18" type="radio" name="developers">
+        <label class="Form-label" for="test18">developers</label>
+      </div>
+      <div class="Form-field Form-field--radio">
+        <input class="Form-input" id="test19" type="radio" name="developers">
+        <label class="Form-label" for="test19">developers</label>
+      </div>
+    </form>
+  </div>
+  <h3 class="Test-it">renders Form-message within the Form-input boundaries</h3>
+  <div class="Test-run">
+    <form class="Form Form--horizontal" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message.</span>
+        </span>
+        <span class="Form-button"><button>Submit</button></span>
+      </label>
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message. A very long message.</span>
+        </span>
+      </label>
+    </form>
+
+    <h3 class="Test-it">renders Form-label that wraps by default</h3>
+    <div class="Test-run">
+      <form class="Form Form--horizontal Form--spaced" action="" method="GET">
+        <label class="Form-field">
+          <span class="Form-label">A long label. A long label.</span>
+          <span class="Form-inputWrapper">
+            <input class="Form-input" type="text" placeholder="cats">
+            <span class="Form-message">A message</span>
+          </span>
+        </label>
+        <label class="Form-field">
+          <span class="Form-label u-size1of8">A long label. A long label.</span>
+          </span>
+          <span class="Form-inputWrapper">
+            <input class="Form-input" type="text" placeholder="cats">
+            <span class="Form-message">A message</span>
+          </span>
+        </label>
+      </form>
+    </div>
+
+    <h3 class="Test-it">renders expandable Form-label (Form-field--fit)</h3>
+    <div class="Test-run">
+      <form class="Form Form--horizontal Form--spaced" action="" method="GET">
+        <label class="Form-field Form-field--fit">
+          <span class="Form-label u-size1of12">A long label. A long label.</span>
+          <span class="Form-inputWrapper">
+            <input class="Form-input" type="text" placeholder="cats">
+            <span class="Form-message">Hover over the label!</span>
+          </span>
+        </label>
+      </form>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Form--spaced</h2>
+  <h3 class="Test-it">renders full-width form fields with uniform vertical space</h3>
+  <div class="Test-run">
+    <form class="Form Form--spaced" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+      </label>
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+      </label>
+      <div class="Form-field">
+        <span class="Form-button">
+          <button>Submit</button>
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <h3 class="Test-it">renders full-width and horizontal form fields with uniform vertical space</h3>
+  <div class="Test-run">
+    <form class="Form Form--horizontal Form--spaced" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+      </label>
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+        <span class="Form-button"><button>Submit</button></span>
+      </label>
+      <div class="Form-field">
+        <span class="Form-button">
+          <button>Submit</button>
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <h3 class="Test-it">collapses the first Form-field margins</h3>
+  <div class="Test-run">
+    <p style="margin-bottom: 10px;">An element with margin-bottom.</p>
+    <form class="Form Form--spaced" action="" method="GET">
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+      </label>
+      <label class="Form-field">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="text" placeholder="cats">
+          <span class="Form-message">A message</span>
+        </span>
+      </label>
+    </form>
+  </div>
+
+  <h2 class="Test-describe">Form-field state</h2>
+  <h3 class="Test-it">highlights valid fields</h3>
+  <div class="Test-run">
+    <form class="Form" action="" method="GET">
+      <label class="Form-field is-valid">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="email" placeholder="cats">
+          <span class="Form-message">Valid</span>
+        </span>
+      </label>
+    </form>
+  </div>
+  <h3 class="Test-it">highlights invalid fields</h3>
+  <div class="Test-run">
+    <form class="Form" action="" method="GET">
+      <label class="Form-field is-invalid">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="email" placeholder="cats">
+          <span class="Form-message">Invalid</span>
+        </span>
+      </label>
+    </form>
+  </div>
+  <h3 class="Test-it">highlights warning fields</h3>
+  <div class="Test-run">
+    <form class="Form" action="" method="GET">
+      <label class="Form-field is-warning">
+        <span class="Form-label">Label</span>
+        <span class="Form-inputWrapper">
+          <input class="Form-input" type="email" placeholder="cats">
+          <span class="Form-message">Warning</span>
+        </span>
+      </label>
+    </form>
+  </div>
+</div>

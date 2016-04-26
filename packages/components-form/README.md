@@ -71,11 +71,13 @@ Read more about how to [style dependencies](https://github.com/suitcss/suit/blob
   </div>
   <div class="Form-field">
     <!-- .Form-button attaches to the .Button component -->
-    <button class="Form-button Button u-inlineBlock">
+    <button class="Form-button Button">
       Submit
     </button>
+  </div>
+  <div class="Form-field u-inlineBlock">
     <!-- .Form-wrapButton wraps the .Button component -->
-    <span class="Form-wrapButton u-inlineBlock">
+    <span class="Form-wrapButton">
       <button class="Button">Submit</button>
     </span>
 

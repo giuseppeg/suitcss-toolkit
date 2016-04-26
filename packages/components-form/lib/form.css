@@ -7,7 +7,6 @@
   --Form-label-color: inherit;
   --Form-label-font-size: inherit;
   --Form-label-font-weight: bold;
-  --Form-label-margin: 0.5em;
 
   /* .Form-input properties */
 
@@ -31,11 +30,6 @@
 
   --Form-message-color: inherit;
   --Form-message-font-size: 0.9em;
-  --Form-message-margin: 0.5em;
-
-  /* .Form[-field]--horizontal properties */
-
-  --Form--horizontal-gutter: 0.5em;
 
   /* .Form--spaced properties */
 
@@ -65,7 +59,7 @@
 /**
  * Generic Form component
  *
- * Provides styles to create stacked (by default) and horizontal forms
+ * Provides styles to create stacked forms
  */
 
 /* Form parts
@@ -126,38 +120,39 @@
  * Simple Custom <select>.
  *
  * 1. Change the `appearance` so that padding and custom arrow applies.
- * 2. Reset `padding-right` for IE<=9
  */
 
-/* postcss-bem-linter: ignore */
+@supports (appearance: none) {
 
-select.Form-input {
-  appearance: none; /* 1 */
-  background-color: #fff;
+  /* postcss-bem-linter: ignore */
 
-  /* Custom arrow styles. */
+  select.Form-input {
+    appearance: none; /* 1 */
+    background-color: #fff;
 
-  background-image: url(var(--Form-select-background));
-  background-image:
-    image-set(
-      url(
-        var(
-          --Form-select-background
-        )
-      ) 1x,
-      url(
-        var(
-          --Form-select-background-2x
-        )
-      ) 2x
-    );
-  background-position: right var(--Form-input-padding) center;
-  background-repeat: no-repeat;
-  padding-right:
-    calc(
-      var(--Form-select-background-width) + (2 * var(--Form-input-padding))
-    );
-  padding-right: var(--Form-input-padding) \9; /* 2 */
+    /* Custom arrow styles. */
+
+    background-image: url(var(--Form-select-background));
+    background-image:
+      image-set(
+        url(
+          var(
+            --Form-select-background
+          )
+        ) 1x,
+        url(
+          var(
+            --Form-select-background-2x
+          )
+        ) 2x
+      );
+    background-position: right var(--Form-input-padding) center;
+    background-repeat: no-repeat;
+    padding-right:
+      calc(
+        var(--Form-select-background-width) + (2 * var(--Form-input-padding))
+      );
+  }
 }
 
 /**
@@ -167,17 +162,6 @@ select.Form-input {
 .Form-input[type="range"] {
   border: 0;
   padding: 0;
-}
-
-/**
- * Form-inputWrapper: a generic Form-input wrapper.
- *
- * Use it to group .Form-input and .Form-message when making horizontal forms.
- */
-
-.Form-inputWrapper {
-  display: block;
-  width: 100%;
 }
 
 /**
@@ -193,43 +177,40 @@ select.Form-input {
 }
 
 /**
- * Form button.
+ * Form button
+ * and form <button> wrapper.
  *
- * A form <button> container.
- *
- * N.B. Form-button makes buttons full-width.
+ * N.B. Form-button and Form-buttonWrap makes buttons full-width.
  *      Set the `display` property to `inline-block` to change this behavior.
  *      The rules are `!important` to ensure consistency with the Form styles.
  *      <button>s are not styled and the styling is left to the consumer
  *      of this component.
  */
 
+.Form-button,
+.Form-wrapButton {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
 /* postcss-bem-linter: ignore */
 
-.Form-button > button {
+.Form-button,
+.Form-wrapButton button {
   border-radius: var(--Form-input-border-radius) !important;
   box-sizing: border-box !important;
   font-family: inherit !important;
   font-size: var(--Form-input-font-size) !important;
   padding: var(--Form-input-padding) !important;
-  width: 100%;
 }
 
-/**
- * Spacing between Form-label and Form-input[Wrapper]
- */
+/* postcss-bem-linter: ignore */
 
-.Form-label + .Form-input,
-.Form-label + .Form-inputWrapper {
-  margin-top: var(--Form-label-margin);
-}
-
-/**
- * Spacing between Form-input and Form-message
- */
-
-.Form-input + .Form-message {
-  margin-top: var(--Form-message-margin);
+.Form-wrapButton button {
+  display: block;
+  margin: 0 !important;
+  width: 100% !important;
 }
 
 /**
@@ -264,108 +245,6 @@ select.Form-input {
 .Form-field--radio .Form-label {
   display: table-cell;
   font-weight: normal;
-  width: 100% !important; /* 1 */
-}
-
-/**
- * Modifier: horizontal form[ field]
- *
- * 1. Horizontal gutters
- */
-
-.Form--horizontal .Form-field,
-.Form-field--horizontal {
-  border-collapse: separate;
-  border-spacing: var(--Form--horizontal-gutter) 0; /* 1 */
-  display: table;
-  margin: 0 calc(-1 * var(--Form--horizontal-gutter)); /* 1 */
-  min-width: 100%;
-}
-
-/**
- * .Form-field Modifier: allows for inline no-wrapping Form-label
- * that expands on :hover to reveal the full-length text.
- *
- * N.B. an explicit width is required to be set
- *      on the Form-label for this modifier to work.
- *
- * 1. IE<=9 workarounds.
- * 2. Prevents the cell-width to exceed the actual value set on the element.
- */
-
-.Form-field--fit {
-  table-layout: fixed\9; /* 1 */
-  width: calc(100% + (2 * var(--Form--horizontal-gutter)));
-  width: 100%\9; /* 1 */
-}
-
-.Form-field--fit:hover {
-  table-layout: auto\9; /* 1 */
-}
-
-.Form-field--fit .Form-label {
-  max-width: 0; /* 2 */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.Form-field--fit .Form-label:active,
-.Form-field--fit .Form-label:hover {
-  max-width: none;
-}
-
-/**
- * 1. Reset border-collapse to not affect the descendants
- */
-
-.Form--horizontal .Form-label,
-.Form-field--horizontal .Form-label {
-  border-collapse: collapse; /* 1 */
-  display: table-cell;
-  margin: 0;
-  width: 1%;
-}
-
-.Form--horizontal .Form-input,
-.Form-field--horizontal .Form-input {
-  display: table-cell;
-  margin: 0;
-  width: 100%;
-}
-
-/**
- * 1. Reset border-collapse to not affect the descendants
- */
-
-.Form--horizontal .Form-inputWrapper,
-.Form-field--horizontal .Form-inputWrapper {
-  border-collapse: collapse; /* 1 */
-  display: table-cell;
-  margin: 0;
-  width: 100%;
-}
-
-.Form-inputWrapper .Form-input {
-  display: block;
-}
-
-/* postcss-bem-linter: ignore */
-
-.Form--horizontal textarea,
-.Form-field--horizontal textarea {
-  vertical-align: top;
-}
-
-/**
- * 1. Reset border-collapse to not affect the descendants
- */
-
-.Form--horizontal .Form-button,
-.Form-field--horizontal .Form-button {
-  border-collapse: collapse; /* 1 */
-  display: table-cell;
-  width: 1%;
 }
 
 /**

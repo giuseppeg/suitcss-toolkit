@@ -14,24 +14,19 @@ Read more about [SUIT CSS](https://github.com/suitcss/suit/).
 ## Features
 
 * Full-width forms
-* Horizontal fluid forms
 * Inter-fields vertical spacing
 * Fields adapt to the dimensions of an ancestral context
-* Works with wrapping labels
-* Collapsable labels that expand on hover
 * Simple Custom Select
 * Basic validation states
 
 ## Available classes
 
 * `Form` core component
-* `Form--horizontal` horizontal forms
 * `Form--spaced` adds spacing between form fields
 * `Form-field` a form field container
 * `Form-field--checkbox` checkbox input modifier
 * `Form-field--radio` radio input modifier
 * `Form-label` form label text
-* `Form-label--fit` collapsable labels that expand on hover
 * `Form-input` the actual form input
 * `Form-message` an (optional) form message
 
@@ -50,32 +45,23 @@ form input, label and optionally a message.
 </form>
 ```
 
-`Form-field` and `Form-message` can be grouped (wrapped) with `Form-inputWrapper`.<br>
-This is particularly useful to align them with labels when making horizontal forms.
-
-```html
-<form class="Form Form--horizontal" action="/" method="GET">
-  <div class="Form-field">
-    <label class="Form-label" for="field">Field</label>
-    <div class="Form-inputWrapper">
-      <input class="Form-input" type="text" id="field">
-      <p class="Form-message">Hello there</p>
-    </div>
-  </div>
-</form>
-```
-
 ### Special form fields
 
 Basic styles for more complex form fields are included in this component.
 
 #### Buttons
 
-Buttons are not styled – styling is left to the consumer of this component.
+Buttons are not styled. You are free to style buttons as you please or use an existing component like [suitcss-button](https://github.com/suitcss/components-button).
 
-SUIT CSS Form provides a container `.Form-button` that makes buttons
-[full-width](https://github.com/suitcss/suit/blob/master/doc/components.md#adapting-to-ancestral-context) and consistent with the `Form` styles by tweaking padding,
-borders and border radii only.
+SUIT CSS Form however provides two classes:
+
+* `.Form-button` – Attaches to a nested component
+* `.Form-wrapButton` – Wraps a nested component
+
+Both make buttons [full-width](https://github.com/suitcss/suit/blob/master/doc/components.md#adapting-to-ancestral-context) and consistent with the `Form` styles by tweaking padding, borders and border radii only.
+
+Read more about how to [style dependencies](https://github.com/suitcss/suit/blob/master/doc/components.md#styling-dependencies).
+
 
 ```html
 <form class="Form" action="/" method="GET">
@@ -84,9 +70,15 @@ borders and border radii only.
     <input class="Form-input" type="text" id="field">
   </div>
   <div class="Form-field">
-    <span class="Form-button u-inlineBlock">
-      <button>Submit</button>
+    <!-- .Form-button attaches to the .Button component -->
+    <button class="Form-button Button u-inlineBlock">
+      Submit
+    </button>
+    <!-- .Form-wrapButton wraps the .Button component -->
+    <span class="Form-wrapButton u-inlineBlock">
+      <button class="Button">Submit</button>
     </span>
+
   </div>
 </form>
 ```
@@ -123,52 +115,9 @@ needed:
 * Padding, border and border radii match other inputs styles.
 * Custom arrow.
 
-#### Fit labels with ellipsis
-
-When making horizontal forms and form labels are too long you have two options:
-
-* Let the label text wrap (default).
-* Avoid wrapping text (suggested solution – use an utility class).
-* Hide overflowing text and add ellipsis.
-
-The latter approach provides a bad UX because people can't expand and read the label text.
-
-**It is advised not to do so!** However if you still want to do this use
-`Form-field--fit` to add an expand on `hover` and `active` effect.
-
 ### Horizontal forms
 
-* `Form--horizontal` makes an entire form horizontal.
-* `Form-field--horizontal` makes a single `Form-field` horizontal.
-
-```html
-<form class="Form Form--horizontal" action="/" method="GET">
-  <div class="Form-field">
-    <label class="Form-label" for="field">Field</label>
-    <input class="Form-input" type="text" id="field">
-  </div>
-</form>
-```
-
-It is possible to make a single horizontal `Form-field`:
-
-```html
-<form class="Form" action="/" method="GET">
-  <div class="Form-field Form-field--horizontal">
-    <label class="Form-label" for="field-regular">Field</label>
-    <input class="Form-input" type="text" id="field-regular">
-  </div>
-  <div class="Form-field Form-field--horizontal">
-    <label class="Form-label" for="field">Horizontal Field</label>
-    <input class="Form-input" type="text" id="field">
-  </div>
-</form>
-```
-
-The label `width` is auto-computed and variable.
-Use [size utilities](https://github.com/suitcss/utils-size) to set a fixed and constant width.
-
-N.B. Checkbox and radio inputs stay full-width.
+Use a layout component like [suitcss-grid](https://github.com/suitcss/components-grid).
 
 ### Vertical spacing between Form-field
 
@@ -212,7 +161,6 @@ Properties names are self explainatory.
 * `--Form-label-color`
 * `--Form-label-font-size`
 * `--Form-label-font-weight`
-* `--Form-label-margin`
 
 #### .Form-input
 
@@ -236,11 +184,6 @@ Properties names are self explainatory.
 
 * `--Form-message-color`
 * `--Form-message-font-size`
-* `--Form-message-margin`
-
-#### .Form[-field]--horizontal
-
-* `--Form--horizontal-gutter`
 
 #### .Form--spaced
 

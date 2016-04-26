@@ -1,6 +1,6 @@
 {
   "extends": "stylelint-config-suitcss",
   "rules": {
-    "function-url-quotes": 0
+    "function-url-quotes": "none"
   }
 }

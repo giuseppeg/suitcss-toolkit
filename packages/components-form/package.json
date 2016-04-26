@@ -12,9 +12,7 @@
   "devDependencies": {
     "stylelint-config-suitcss": "^5.0.0",
     "suitcss-components-test": "*",
-    "suitcss-components-grid": "^3.0.0",
-    "suitcss-preprocessor": "^1.0.0",
-    "suitcss-utils-size": "^1.0.1"
+    "suitcss-preprocessor": "^1.0.0"
   },
   "scripts": {
     "build": "npm run setup && npm run preprocess",

@@ -1,9 +1,2 @@
 @import "suitcss-components-test";
-@import "suitcss-components-grid";
-@import "suitcss-utils-size";
 @import "../index.css";
-
-@custom-media --sm-viewport (min-width:1px);
-@custom-media --md-viewport (min-width:1px);
-@custom-media --lg-viewport (min-width:1px);
-

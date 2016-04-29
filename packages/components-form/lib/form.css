@@ -21,10 +21,10 @@
   --Form-checkradio-gutter: 0.5em;
 
   /* Custom <select> arrow properties */
-
-  --Form-select-background: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAQAAACxSAwfAAAAUklEQVQY02P4z0AMRGZGMaShwCisyhITmb8huMzfEhOxKvuvsGAh208Ik+3ngoX/FbBbClcIUcSAw21QhXxfIIrwKAMpfNsEUYRXGVCEFc6CQwBqq4CCCtU4VgAAAABJRU5ErkJggg==";
-  --Form-select-background-2x: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAQAAAA/1a6rAAAAQUlEQVR4Xu3MsQnAMBAEMI1+myf9gw0+3ASCenmu+mQn2yGn3S4Mp906DEW3CEPfzTD03QxD380w3OmIUHe9v+u9QwAt93yns5cAAAAASUVORK5CYII=";
-  --Form-select-background-width: 20px;
+  /* stylelint-disable */
+  --Form-select-arrow: url('data:image/svg+xml;charset=UTF-8,<svg%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20viewBox%3D"0%200%20276.7%20153"%20enable-background%3D"new%200%200%20276.7%20153"><path%20d%3D"M276.7%200H0l138.2%20153z"%20%2F><%2Fsvg>');
+   /* stylelint-enable */
+  --Form-select-arrow-width: 12px;
 
   /* .Form-message properties */
 
@@ -128,29 +128,16 @@
 
   select.Form-input {
     appearance: none; /* 1 */
-    background-color: #fff;
 
     /* Custom arrow styles. */
 
-    background-image: url(var(--Form-select-background));
-    background-image:
-      image-set(
-        url(
-          var(
-            --Form-select-background
-          )
-        ) 1x,
-        url(
-          var(
-            --Form-select-background-2x
-          )
-        ) 2x
-      );
+    background-image: var(--Form-select-arrow);
     background-position: right var(--Form-input-padding) center;
     background-repeat: no-repeat;
+    background-size: var(--Form-select-arrow-width);
     padding-right:
       calc(
-        var(--Form-select-background-width) + (2 * var(--Form-input-padding))
+        var(--Form-select-arrow-width) + (2 * var(--Form-input-padding))
       );
   }
 }

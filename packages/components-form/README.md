@@ -178,9 +178,8 @@ Properties names are self explainatory.
 
 #### Custom &lt;select&gt; arrow
 
-* `--Form-select-background`
-* `--Form-select-background-2x`
-* `--Form-select-background-width`
+* `--Form-select-arrow` `url(imageUrl|base64 encoded image)` – must include `url()`
+* `--Form-select-arrow-width`
 
 #### .Form-message
 

@@ -242,6 +242,9 @@ Basic visual tests are in `test/index.html`.
 
 * Google Chrome (latest)
 * Opera (latest)
-* Firefox 28+
-* Safari 6.1+
+* Firefox (latest)
+* Safari 5.1+
 * Internet Explorer 8+
+* Android 2.2+
+* iOS 5.1+
+* Windows Phone 8.1

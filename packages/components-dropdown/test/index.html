@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Dropdown [component] - suit</title>
+<link rel="stylesheet" href="../build/test.css">
+<style>
+  .Dropdown.is-expanded .Dropdown-menu {
+    position: relative;
+  }
+</style>
+
+<div class="Test">
+  <h1 class="Test-title">SUIT CSS: <a href="https://github.com/giuseppeg/suitcss-components-dropdown">Dropdown</a> tests</h1>
+
+  <h2 class="Test-describe">.Dropdown</h2>
+  <h3 class="Test-it">renders</h3>
+  <div class="Test-run" id="renders">
+    <div class="Dropdown is-expanded">
+      <a
+        aria-controls="dd-1-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        href="#"
+        id="dd-1-toggle"
+      >
+        dropdown
+      </a>
+      <ul
+        aria-labelledby="dd-1-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu"
+        id="dd-1-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">visually hide the `Dropdown-menu` when not in the `is-expanded` state</h3>
+  <div class="Test-run" id="menu-hidden">
+    <div class="Dropdown">
+      <a
+        aria-controls="dd-1-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        href="#"
+        id="dd-1-toggle"
+      >
+        dropdown
+      </a>
+      <ul
+        aria-hidden="true"
+        class="Dropdown-menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Dropdown-menu</h2>
+  <h3 class="Test-it">contains mixed text and link items.</h3>
+  <div class="Test-run" id="menu-mixed">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Dropdown-item</h2>
+  <h3 class="Test-it">.is-active</h3>
+  <div class="Test-run" id="item-active">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item is-active" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">can be separated with .Dropdown-item--separated</h3>
+  <div class="Test-run" id="item-separated">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item Dropdown-item--separated" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item Dropdown-item--separated" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Dropdown-link states</h2>
+  <h3 class="Test-it">hover</h3>
+  <div class="Test-run" id="link-hover">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link :hover" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">focus</h3>
+  <div class="Test-run" id="link-focus">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link :focus" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">active</h3>
+  <div class="Test-run" id="link-active">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link :active" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">Accessibility: show an error when Dropdown-toggle doesn't have</h2>
+  <h3 class="Test-it">[aria-controls]</h3>
+  <div class="Test-run" id="a11y-toggle-controls">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-3-toggle"
+      >Dropdown</button>
+    </div>
+  </div>
+  <h3 class="Test-it">[aria-expanded]</h3>
+  <div class="Test-run" id="a11y-toggle-expanded">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-controls="dd-1-menu"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-4-toggle"
+      >Dropdown</button>
+    </div>
+  </div>
+  <h3 class="Test-it">[aria-haspopup]</h3>
+  <div class="Test-run" id="a11y-toggle-haspopup">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-controls="dd-1-menu"
+        aria-expanded="true"
+        class="Dropdown-toggle"
+        id="dd-5-toggle"
+      >Dropdown</button>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">Accessibility: show an error when Dropdown-menu doesn't have</h2>
+  <h3 class="Test-it">role="menu"</h3>
+  <div class="Test-run" id="a11y-menu-role">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">[aria-hidden]</h3>
+  <div class="Test-run" id="a11y-menu-hidden">
+    <div class="Dropdown is-expanded">
+      <ul
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">Accessibility: show an error when Dropdown-item doesn't have</h2>
+  <h3 class="Test-it">role="menuitem"</h3>
+  <div class="Test-run" id="a11y-item-role">
+    <div class="Dropdown is-expanded">
+      <ul
+        aria-hidden="false"
+        class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item">
+          Item
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "suitcss-components-dropdown",
+  "description": "A SUIT component for dropdowns",
+  "version": "0.1.0",
+  "license": "MIT",
+  "style": "index.css",
+  "files": [
+    "index.css",
+    "index.js",
+    "lib"
+  ],
+  "devDependencies": {
+    "postcss-pseudo-classes": "^0.1.0",
+    "stylelint-config-suitcss": "^6.0.0",
+    "suitcss-components-test": "*",
+    "suitcss-preprocessor": "^2.0.0"
+  },
+  "scripts": {
+    "build": "npm run setup && npm run preprocess",
+    "build-test": "npm run setup && npm run preprocess-test",
+    "preprocess": "suitcss index.css build/build.css",
+    "preprocess-test": "suitcss -c test/config.json -i test test/test.css build/test.css",
+    "setup": "npm install",
+    "watch": "npm run preprocess-test -- -w -v",
+    "test": "suitcss -c test/config.json index.css build/output.css && rm build/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/giuseppeg/suitcss-components-dropdown.git"
+  },
+  "keywords": [
+    "browser",
+    "css-components",
+    "components-dropdown",
+    "suitcss",
+    "style"
+  ]
+}

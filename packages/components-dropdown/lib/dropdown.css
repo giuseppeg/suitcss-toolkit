@@ -1,0 +1,118 @@
+/** @define Dropdown */
+
+:root {
+  --Dropdown-menu-backgroundColor: #fff;
+  --Dropdown-menu-borderColor: currentColor;
+  --Dropdown-menu-borderRadius: 2px;
+  --Dropdown-menu-boxShadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --Dropdown-menu-zIndex: 1;
+
+  --Dropdown-item-borderColor: currentColor;
+  --Dropdown-item-padding-horizontal: 0.75rem;
+  --Dropdown-item-padding-vertical: 0.25rem;
+
+  --Dropdown-link-color: currentColor;
+  --Dropdown-link-onHover-backgroundColor: #eee;
+  --Dropdown-link-onHover-color: currentColor;
+
+}
+
+.Dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.Dropdown-menu {
+  background-clip: padding-box;
+  background-color: var(--Dropdown-menu-backgroundColor);
+  border: 1px solid var(--Dropdown-menu-borderColor);
+  border-radius: var(--Dropdown-menu-borderRadius);
+  box-shadow: var(--Dropdown-menu-boxShadow);
+  left: -99999px;
+  margin: 0;
+  padding: var(--Dropdown-item-padding-vertical) 0;
+  position: absolute;
+  z-index: var(--Dropdown-menu-zIndex);
+}
+
+/* postcss-bem-linter: ignore */
+
+[dir="rtl"] .Dropdown-menu {
+  left: auto;
+  right: -99999px;
+}
+
+.Dropdown.is-expanded .Dropdown-menu {
+  left: auto;
+}
+
+/* postcss-bem-linter: ignore */
+
+[dir="rtl"] .Dropdown.is-expanded .Dropdown-menu {
+  right: auto;
+}
+
+/**
+ * Modifier: Dropdown-menu--inversePosition
+ * Inverts the dropdown menu position by placing it on the right.
+ * If the direction is explicitly set to rtl [dir="rtl"]
+ * then it places the dropdown menu on the left.
+ */
+
+.Dropdown.is-expanded .Dropdown-menu--inversePosition {
+  left: auto;
+  right: 0;
+}
+
+/* postcss-bem-linter: ignore */
+
+[dir="rtl"] .Dropdown.is-expanded .Dropdown-menu--inversePosition {
+  left: 0;
+  right: auto;
+}
+
+/**
+ * Modifier: Dropdown-menu--bottomPosition
+ * Shows the dropdown menu at the bottom
+ */
+
+.Dropdown-menu--bottom {
+  bottom: 100%;
+}
+
+.Dropdown-item,
+.Dropdown-link {
+  display: block;
+  padding:
+    var(--Dropdown-item-padding-vertical)
+    var(--Dropdown-item-padding-horizontal);
+}
+
+.Dropdown-item {
+  white-space: nowrap;
+}
+
+.Dropdown-item--separated {
+  border-top: 1px solid var(--Dropdown-item-borderColor);
+}
+
+.Dropdown-link {
+  color: var(--Dropdown-link-color);
+  margin:
+    calc(-1 * var(--Dropdown-item-padding-vertical))
+    calc(-1 * var(--Dropdown-item-padding-horizontal));
+  text-decoration: none;
+}
+
+.Dropdown-link:hover,
+.Dropdown-link:focus,
+.Dropdown-link.is-active,
+.Dropdown-item.is-active,
+.Dropdown-item.is-active > .Dropdown-link {
+  background-color: var(--Dropdown-link-onHover-backgroundColor);
+  color: var(--Dropdown-link-onHover-color);
+}
+
+.Dropdown-link:active {
+  box-shadow: inset 0 0 99999px rgba(0, 0, 0, 0.3);
+}

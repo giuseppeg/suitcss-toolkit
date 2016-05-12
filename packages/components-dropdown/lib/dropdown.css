@@ -53,30 +53,30 @@
 }
 
 /**
- * Modifier: Dropdown-menu--inversePosition
+ * Modifier: Dropdown-menu--inversePlacement
  * Inverts the dropdown menu position by placing it on the right.
  * If the direction is explicitly set to rtl [dir="rtl"]
  * then it places the dropdown menu on the left.
  */
 
-.Dropdown.is-expanded .Dropdown-menu--inversePosition {
+.Dropdown.is-expanded .Dropdown-menu--inversePlacement {
   left: auto;
   right: 0;
 }
 
 /* postcss-bem-linter: ignore */
 
-[dir="rtl"] .Dropdown.is-expanded .Dropdown-menu--inversePosition {
+[dir="rtl"] .Dropdown.is-expanded .Dropdown-menu--inversePlacement {
   left: 0;
   right: auto;
 }
 
 /**
- * Modifier: Dropdown-menu--bottomPosition
+ * Modifier: Dropdown-menu--upPlacement
  * Shows the dropdown menu at the bottom
  */
 
-.Dropdown-menu--bottom {
+.Dropdown-menu--upPlacement {
   bottom: 100%;
 }
 

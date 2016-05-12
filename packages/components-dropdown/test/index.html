@@ -2,11 +2,6 @@
 <meta charset="utf-8">
 <title>Dropdown [component] - suit</title>
 <link rel="stylesheet" href="../build/test.css">
-<style>
-  .Dropdown.is-expanded .Dropdown-menu {
-    position: relative;
-  }
-</style>
 
 <div class="Test">
   <h1 class="Test-title">SUIT CSS: <a href="https://github.com/giuseppeg/suitcss-components-dropdown">Dropdown</a> tests</h1>
@@ -15,16 +10,15 @@
   <h3 class="Test-it">renders</h3>
   <div class="Test-run" id="renders">
     <div class="Dropdown is-expanded">
-      <a
+      <button type="button"
         aria-controls="dd-1-menu"
         aria-expanded="true"
         aria-haspopup="true"
         class="Dropdown-toggle"
-        href="#"
         id="dd-1-toggle"
       >
         dropdown
-      </a>
+      </button>
       <ul
         aria-labelledby="dd-1-toggle"
         aria-hidden="false"
@@ -44,19 +38,21 @@
   <h3 class="Test-it">visually hide the `Dropdown-menu` when not in the `is-expanded` state</h3>
   <div class="Test-run" id="menu-hidden">
     <div class="Dropdown">
-      <a
-        aria-controls="dd-1-menu"
+      <button type="button"
+        aria-controls="dd-2-menu"
         aria-expanded="true"
         aria-haspopup="true"
         class="Dropdown-toggle"
-        href="#"
-        id="dd-1-toggle"
+        id="dd-2-toggle"
       >
         dropdown
-      </a>
+      </button>
       <ul
+        aria-labelledby="dd-2-toggle"
         aria-hidden="true"
         class="Dropdown-menu"
+        id="dd-2-menu"
+        role="menu"
       >
         <li class="Dropdown-item" role="menuitem">
           Item
@@ -75,6 +71,146 @@
       <ul
         aria-hidden="false"
         class="Dropdown-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">default placement</h3>
+  <div class="Test-run" id="menu-mixed">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-controls="dd-3-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-3-toggle"
+      >
+        dropdown
+      </button>
+      <ul
+        aria-labelledby="dd-3-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu"
+        id="dd-3-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">default rtl placement</h3>
+  <div class="Test-run" id="menu-mixed" dir="rtl">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-controls="dd-4-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-4-toggle"
+      >
+        dropdown
+      </button>
+      <ul
+        aria-labelledby="dd-4-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu"
+        id="dd-4-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">Dropdown-menu--inversePlacement</h3>
+  <div class="Test-run" id="menu-mixed">
+    <div class="Dropdown is-expanded">
+      <button
+        aria-controls="dd-5-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-5-toggle"
+      >
+        dropdown
+      </button>
+      <ul
+        aria-labelledby="dd-5-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu Dropdown-menu--inversePlacement"
+        id="dd-5-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">Dropdown-menu--inversePlacement rtl</h3>
+  <div class="Test-run" id="menu-mixed" dir="rtl">
+    <div class="Dropdown is-expanded">
+      <button type="button"
+        aria-controls="dd-6-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-6-toggle"
+      >
+        dropdown
+      </button>
+      <ul
+        aria-labelledby="dd-6-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu Dropdown-menu--inversePlacement"
+        id="dd-6-menu"
+        role="menu"
+      >
+        <li class="Dropdown-item" role="menuitem">
+          Item
+        </li>
+        <li class="Dropdown-item" role="menuitem">
+          <a class="Dropdown-link" href="">Link Item</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="Test-it">Dropdown-menu--upPlacement</h3>
+  <div class="Test-run" id="menu-mixed">
+    <div class="Dropdown is-expanded">
+      <button type="button"
+        aria-controls="dd-7-menu"
+        aria-expanded="true"
+        aria-haspopup="true"
+        class="Dropdown-toggle"
+        id="dd-7-toggle"
+      >
+        dropdown
+      </button>
+      <ul
+        aria-labelledby="dd-7-toggle"
+        aria-hidden="false"
+        class="Dropdown-menu Dropdown-menu--upPlacement"
+        id="dd-7-menu"
         role="menu"
       >
         <li class="Dropdown-item" role="menuitem">
@@ -178,7 +314,6 @@
         aria-expanded="true"
         aria-haspopup="true"
         class="Dropdown-toggle"
-        id="dd-3-toggle"
       >Dropdown</button>
     </div>
   </div>
@@ -189,7 +324,6 @@
         aria-controls="dd-1-menu"
         aria-haspopup="true"
         class="Dropdown-toggle"
-        id="dd-4-toggle"
       >Dropdown</button>
     </div>
   </div>
@@ -200,7 +334,6 @@
         aria-controls="dd-1-menu"
         aria-expanded="true"
         class="Dropdown-toggle"
-        id="dd-5-toggle"
       >Dropdown</button>
     </div>
   </div>
@@ -249,3 +382,35 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function ($) {
+    var setHeight = (function () {
+      var dropdowns = $('.Dropdown.is-expanded');
+      function getHeight(element) {
+        var styles = window.getComputedStyle(element);
+        var margin = parseFloat(styles.marginTop) +
+                     parseFloat(styles.marginBottom);
+        return Math.ceil(element.offsetHeight + margin);
+      }
+      return function () {
+        dropdowns.forEach(function (dropdown) {
+          dropdown.style.minHeight = 0;
+          var height = getHeight(dropdown);
+          $('.Dropdown-menu', dropdown).forEach(function (menu) {
+            var menuHeight = getHeight(menu);
+            if (menuHeight) {
+              height += menuHeight;
+            }
+          });
+          dropdown.style.minHeight = height+'px';
+        });
+      };
+    }());
+    window.addEventListener('resize', setHeight);
+    setHeight();
+  }(function (selector, parent) {
+    var root = parent && parent.nodeType === 1 ? parent : document.body;
+    return [].slice.call(root.querySelectorAll(selector));
+  }))
+</script>

@@ -65,8 +65,8 @@ When writing a JavaScript component for the Dropdown it is highly recommended to
 
 ### Modifiers
 
-* `Dropdown-menu--inversePosition` - Inverts the dropdown menu position by placing it on the right or left if any anchestor has `[dir="rtl"]`
-* `Dropdown-menu--bottom` – Shows the dropdown menu at the bottom
+* `Dropdown-menu--inversePlacement` - Inverts the dropdown menu position by placing it on the right or left if any anchestor has `[dir="rtl"]`
+* `Dropdown-menu--upPlacement` – Shows the dropdown menu at the top
 * `Dropdown-item--separated` – Separates the `Dropdown-item` by adding a `border-top` to it
 
 ### State

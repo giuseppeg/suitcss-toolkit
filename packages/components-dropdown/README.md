@@ -110,6 +110,12 @@ To generate the testing build.
 npm run build-test
 ```
 
+Unit tests:
+
+```
+npm test
+```
+
 Basic visual tests are in `test/index.html`.
 
 To pre-process:

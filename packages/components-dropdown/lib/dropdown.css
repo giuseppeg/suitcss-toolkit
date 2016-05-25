@@ -104,6 +104,7 @@
   text-decoration: none;
 }
 
+.Dropdown-link:active,
 .Dropdown-link:hover,
 .Dropdown-link:focus,
 .Dropdown-link.is-active,

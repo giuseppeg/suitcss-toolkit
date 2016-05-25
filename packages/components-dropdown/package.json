@@ -10,10 +10,19 @@
     "lib"
   ],
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "browserify-css": "^0.9.1",
+    "computed-style": "^0.3.0",
+    "hyperscript": "^1.4.7",
     "postcss-pseudo-classes": "^0.1.0",
     "stylelint-config-suitcss": "^6.0.0",
     "suitcss-components-test": "*",
-    "suitcss-preprocessor": "^2.0.0"
+    "suitcss-preprocessor": "^2.0.0",
+    "tape": "^4.5.1",
+    "tape-css": "^1.0.2-beta",
+    "tape-run": "^2.1.4"
   },
   "scripts": {
     "build": "npm run setup && npm run preprocess",
@@ -22,7 +31,8 @@
     "preprocess-test": "suitcss -c test/config.json -i test test/test.css build/test.css",
     "setup": "npm install",
     "watch": "npm run preprocess-test -- -w -v",
-    "test": "suitcss -c test/config.json index.css build/output.css && rm build/output.css"
+    "test": "browserify test/index.js -t [ browserify-css --autoInject=false ] -t [ babelify --presets [ es2015 ] ] | tape-run -b firefox",
+    "pretest": "npm run preprocess-test"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,10 @@
+/** @define Icon */
+
+.Icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  max-width: 100%;
+  user-select: none;
+  vertical-align: text-bottom;
+}

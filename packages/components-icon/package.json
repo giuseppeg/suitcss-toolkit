@@ -1,0 +1,36 @@
+{
+  "name": "suitcss-components-icon",
+  "description": "A SUIT component for SVG Icons",
+  "version": "0.1.0",
+  "style": "index.css",
+  "files": [
+    "index.css",
+    "index.js",
+    "lib"
+  ],
+  "devDependencies": {
+    "stylelint-config-suitcss": "^5.0.0",
+    "suitcss-components-test": "*",
+    "suitcss-preprocessor": "^1.0.0"
+  },
+  "scripts": {
+    "build": "npm run setup && npm run preprocess",
+    "build-test": "npm run setup && npm run preprocess-test",
+    "preprocess": "suitcss index.css build/build.css",
+    "preprocess-test": "suitcss -i test test/test.css build/test.css",
+    "setup": "npm install",
+    "watch": "npm run preprocess-test -- -w -v",
+    "test": "suitcss -c test/config.json index.css build/output.css && rm build/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/giuseppeg/suitcss-components-icon.git"
+  },
+  "keywords": [
+    "browser",
+    "css-components",
+    "components-icon",
+    "suitcss",
+    "style"
+  ]
+}

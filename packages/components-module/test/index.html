@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Module [component] - suit</title>
+<link rel="stylesheet" href="../build/test.css">
+<style>
+  .Test-run,
+  .u-highlightBox {
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+</style>
+
+<div class="Test">
+  <h1 class="Test-title">SUIT CSS: <a href="https://github.com/giuseppeg/components-module">Module</a> tests</h1>
+
+  <h2 class="Test-describe">.Module</h2>
+  <h3 class="Test-it">renders</h3>
+  <div class="Test-run" id="renders">
+    <div class="Module">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Module--withGutter</h2>
+  <h3 class="Test-it">adds vertical space between each `.Module-block`</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withGutter">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">.Module--withGutterSmall</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withGutterSmall">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">.Module--withGutterLarge</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withGutterLarge">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Module--withPadding</h2>
+  <h3 class="Test-it">adds inner space to each `.Module-block`</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withPadding">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">.Module--withPaddingSmall</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withPaddingSmall">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">.Module--withPaddingLarge</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withPaddingLarge">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Module--card</h2>
+  <h3 class="Test-it">renders</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--card">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">works with `.Module--withPadding`</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--card Module--withPadding">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">.Module-block--separated</h2>
+  <h3 class="Test-it">adds separator at the top</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withPadding">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block Module-block--separated u-highlightBox">
+        Content
+      </div>
+      <footer class="Module-block">
+        Footer
+      </footer>
+    </div>
+  </div>
+  <h3 class="Test-it">(showcase) separated Module-block</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withPadding">
+      <header class="Module-block">
+        Header
+      </header>
+      <div class="Module-block Module-block--separated">
+        Content
+      </div>
+      <footer class="Module-block Module-block--separated">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+  <h2 class="Test-describe">Nested Module</h2>
+  <h3 class="Test-it">modifiers don't affect nested Module</h3>
+  <div class="Test-run" id="test2">
+    <div class="Module Module--withGutters Module--withPadding">
+      <div class="Module-block">
+        <div class="Module">
+          <header class="Module-block">
+            Header
+          </header>
+          <div class="Module-block">
+            Content
+          </div>
+          <footer class="Module-block">
+            Footer
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

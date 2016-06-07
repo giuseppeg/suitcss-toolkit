@@ -1,0 +1,86 @@
+/** @define Module */
+
+:root {
+
+  /* gutter is the vertical space between Module-block(s) */
+  --Module-gutter: 1rem;
+  --Module-gutter-small: 0.5rem;
+  --Module-gutter-large: 3rem;
+
+  /* padding for the Module-block */
+  --Module-padding: 1rem;
+  --Module-padding-small: 0.5rem;
+  --Module-padding-large: 3rem;
+
+  /* Card-style Module */
+  --Module-card-backgroundColor: #fff;
+  --Module-card-borderColor: #ccc;
+  --Module-card-borderRadius: 2px;
+  --Module-card-boxShadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  /* Separator border for the Module-block */
+  --Module-block-separated-borderColor: #ccc;
+}
+
+.Module,
+.Module-block {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Modifier: Module-block--separated
+ * Separates a Module-block from the Module-block above
+ */
+
+.Module-block--separated {
+  border-top: 1px solid var(--Module-block-separated-borderColor);
+}
+
+/**
+ * Modifier: Module--card
+ * Creates a Card-like Module, useful for Cards/Modals/Dialogs.
+ */
+
+.Module--card {
+  background-clip: padding-box;
+  background-color: var(--Module-card-backgroundColor);
+  border: 1px solid var(--Module-card-borderColor);
+  border-radius: var(--Module-card-borderRadius);
+  box-shadow: var(--Module-card-boxShadow);
+}
+
+/**
+ * Modifier: Module--withGutter[Small|Large]
+ * Adds vertical spacing between Module-block
+ */
+
+.Module--withGutter > .Module-block + .Module-block {
+  margin-top: var(--Module-gutter);
+}
+
+.Module--withGutterSmall > .Module-block + .Module-block {
+  margin-top: var(--Module-gutter-small);
+}
+
+.Module--withGutterLarge > .Module-block + .Module-block {
+  margin-top: var(--Module-gutter-large);
+}
+
+/**
+ * Modifier: Module--withPadding[Small|Large]
+ * Adds inner spacing to each Module-block
+ */
+
+.Module--withPadding > .Module-block {
+  padding: var(--Module-padding);
+}
+
+.Module--withPaddingSmall > .Module-block {
+  padding: var(--Module-padding-small);
+}
+
+.Module--withPaddingLarge > .Module-block {
+  padding: var(--Module-padding-large);
+}
+

@@ -16,9 +16,8 @@ Read more about [SUIT's design principles](https://github.com/suitcss/suit/).
 * `Module` - The core class
 * `Module-block` - A block unit, can contain headers, content, footers etc.
 * `Module-block--separated` - Separates a Module-block from the Module-block above
-* `Module--card` – Creates a Card-like Module, useful for Cards/Modals/Dialogs
-* `Module--withGutter[Small|Large]` – Adds vertical spacing between `Module-block`
-* `Module--withPadding[Small|Large]` – Adds inner spacing to each `Module-block`
+* `Module--withGutter[Sm|Lg]` – Adds vertical spacing between `Module-block` where Sm = small, Lg = large
+* `Module--withPadding[Sm|Lg]` – Adds inner spacing to each `Module-block`  where Sm = small, Lg = large
 
 ## Configurable variables
 
@@ -26,25 +25,16 @@ Gutter is the vertical space between Module-block(s)
 
 ```css
 --Module-gutter
---Module-gutter-small
---Module-gutter-large
+--Module-gutter-sm
+--Module-gutter-lg
 ```
 
 Padding for the Module-block
 
 ```css
 --Module-padding
---Module-padding-small
---Module-padding-large
-```
-
-Card-style Module
-
-```css
---Module-card-backgroundColor
---Module-card-borderColor
---Module-card-borderRadius
---Module-card-boxShadow
+--Module-padding-sm
+--Module-padding-lg
 ```
 
 Separator border for the Module-block

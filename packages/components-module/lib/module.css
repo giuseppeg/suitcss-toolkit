@@ -4,19 +4,13 @@
 
   /* gutter is the vertical space between Module-block(s) */
   --Module-gutter: 1rem;
-  --Module-gutter-small: 0.5rem;
-  --Module-gutter-large: 3rem;
+  --Module-gutter-sm: 0.5rem;
+  --Module-gutter-lg: 3rem;
 
   /* padding for the Module-block */
   --Module-padding: 1rem;
-  --Module-padding-small: 0.5rem;
-  --Module-padding-large: 3rem;
-
-  /* Card-style Module */
-  --Module-card-backgroundColor: #fff;
-  --Module-card-borderColor: #ccc;
-  --Module-card-borderRadius: 2px;
-  --Module-card-boxShadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --Module-padding-sm: 0.5rem;
+  --Module-padding-lg: 3rem;
 
   /* Separator border for the Module-block */
   --Module-block-separated-borderColor: #ccc;
@@ -38,20 +32,7 @@
 }
 
 /**
- * Modifier: Module--card
- * Creates a Card-like Module, useful for Cards/Modals/Dialogs.
- */
-
-.Module--card {
-  background-clip: padding-box;
-  background-color: var(--Module-card-backgroundColor);
-  border: 1px solid var(--Module-card-borderColor);
-  border-radius: var(--Module-card-borderRadius);
-  box-shadow: var(--Module-card-boxShadow);
-}
-
-/**
- * Modifier: Module--withGutter[Small|Large]
+ * Modifier: Module--withGutter[Sm|Lg] where Sm = small, Lg = large
  * Adds vertical spacing between Module-block
  */
 
@@ -59,16 +40,16 @@
   margin-top: var(--Module-gutter);
 }
 
-.Module--withGutterSmall > .Module-block + .Module-block {
-  margin-top: var(--Module-gutter-small);
+.Module--withGutterSm > .Module-block + .Module-block {
+  margin-top: var(--Module-gutter-sm);
 }
 
-.Module--withGutterLarge > .Module-block + .Module-block {
-  margin-top: var(--Module-gutter-large);
+.Module--withGutterLg > .Module-block + .Module-block {
+  margin-top: var(--Module-gutter-lg);
 }
 
 /**
- * Modifier: Module--withPadding[Small|Large]
+ * Modifier: Module--withPadding[Sm|Lg] where Sm = small, Lg = large
  * Adds inner spacing to each Module-block
  */
 
@@ -76,11 +57,11 @@
   padding: var(--Module-padding);
 }
 
-.Module--withPaddingSmall > .Module-block {
-  padding: var(--Module-padding-small);
+.Module--withPaddingSm > .Module-block {
+  padding: var(--Module-padding-sm);
 }
 
-.Module--withPaddingLarge > .Module-block {
-  padding: var(--Module-padding-large);
+.Module--withPaddingLg > .Module-block {
+  padding: var(--Module-padding-lg);
 }
 

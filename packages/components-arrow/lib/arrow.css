@@ -1,0 +1,61 @@
+/** @define Arrow */
+
+:root {
+  --Arrow-size: 16px;
+
+  --Arrow-backgroundColor: #fff;
+
+  --Arrow-borderColor: transparent;
+  --Arrow-borderRadius: 0;
+
+  --Arrow-boxShadowColor: transparent;
+  --Arrow-boxShadowSpread: 0px; /* stylelint-disable-line */
+}
+
+.Arrow {
+  display: inline-block;
+  font-size: var(--Arrow-size);
+  height: 0.7em;
+  overflow: hidden;
+  padding: 1px calc(2 + var(--Arrow-boxShadowSpread));
+  text-align: center;
+  width: 1em;
+}
+
+.Arrow::before {
+  background-color: var(--Arrow-backgroundColor);
+  border: 1px solid var(--Arrow-borderColor);
+  border-radius: var(--Arrow-borderRadius);
+  bottom: 100%;
+  box-shadow: 0 0 var(--Arrow-boxShadowSpread) var(--Arrow-boxShadowColor);
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  margin-top: -2px;
+  padding-bottom: 100%;
+  position: relative;
+  transform: rotate(45deg);
+  width: 100%;
+}
+
+/**
+ * Position modifiers.
+ * N.B. `Arrow--bottom` is the default
+ */
+
+.Arrow--top {
+  transform: rotate(180deg);
+}
+
+.Arrow--right {
+  transform: rotate(-90deg);
+}
+
+.Arrow--bottom {
+  transform: rotate(0);
+}
+
+.Arrow--left {
+  transform: rotate(90deg);
+}
+

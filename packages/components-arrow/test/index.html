@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Arrow [component] - suit</title>
+<link rel="stylesheet" href="../build/test.css">
+<style>
+  /* CSS to help implement and/or expose the test */
+  .Arrow::before { background-color: #ccc; }
+  .test-Arrow--border::before { border-color: blue; }
+  .test-Arrow--shadow { padding: 1px 34px; }
+  .test-Arrow--shadow::before { box-shadow: 0 0 32px green; }
+</style>
+
+<div class="Test">
+  <h1 class="Test-title">SUIT CSS: <a href="https://github.com/giuseppeg/suitcss-components-arrow">Arrow</a> tests</h1>
+
+  <h2 class="Test-describe">.Arrow</h2>
+  <h3 class="Test-it">renders</h3>
+  <div class="Test-run" id="renders">
+    <div class="Arrow"></div>
+  </div>
+  <h3 class="Test-it">scales when increasing the element's `font-size`</h3>
+  <div class="Test-run" id="test2">
+    <div class="Arrow" style="font-size: 32px;"></div>
+    <div class="Arrow" style="font-size: 64px;"></div>
+    <div class="Arrow" style="font-size: 128px;"></div>
+  </div>
+  <h3 class="Test-it">border</h3>
+  <div class="Test-run" id="test3">
+    <div class="Arrow test-Arrow--border" style="font-size: 32px;"></div>
+  </div>
+  <h3 class="Test-it">box-shadow</h3>
+  <div class="Test-run" id="test4">
+    <div class="Arrow test-Arrow--shadow" style="font-size: 64px;"></div>
+  </div>
+  <h3 class="Test-it">border and box-shadow</h3>
+  <div class="Test-run" id="test5">
+    <div class="Arrow test-Arrow--border test-Arrow--shadow" style="font-size: 128px;"></div>
+  </div>
+
+  <h2 class="Test-describe">.Arrow--[side] modifier</h2>
+  <h3 class="Test-it">Arrow--top</h3>
+  <div class="Test-run" id="test6">
+    <div class="Arrow Arrow--top" style="font-size: 32px;"></div>
+  </div>
+  <h3 class="Test-it">Arrow--right</h3>
+  <div class="Test-run" id="test7">
+    <div class="Arrow Arrow--right" style="font-size: 32px;"></div>
+  </div>
+  <h3 class="Test-it">Arrow--bottom (default)</h3>
+  <div class="Test-run" id="test8">
+    <div class="Arrow Arrow--bottom" style="font-size: 32px;"></div>
+  </div>
+  <h3 class="Test-it">Arrow--left</h3>
+  <div class="Test-run" id="test9">
+    <div class="Arrow Arrow--left" style="font-size: 32px;"></div>
+  </div>
+</div>

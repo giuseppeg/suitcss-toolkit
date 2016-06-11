@@ -85,8 +85,8 @@ npm run preprocess-test
 
 ## Browser support
 
-* Google Chrome (latest)
-* Opera (latest)
-* Firefox 4+
-* Safari 5+
-* Internet Explorer 8+
+* Google Chrome 4+
+* Opera 11.5+
+* Firefox 3.5+
+* Safari 3.1+
+* Internet Explorer 9+

@@ -47,7 +47,7 @@ E.g.:
 
 ### Tweaking the Arrow Size
 
-The arrow size can be changed by overriding the `font-size` of `.Arrow` element.
+The arrow size can be changed by overriding the `font-size` of the `.Arrow` element.
 
 ## Testing
 

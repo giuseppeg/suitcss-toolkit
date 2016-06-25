@@ -25,17 +25,20 @@ install: node_modules
 ## Component
 ### Usage: make component name=componentName
 component: node_modules
-	$(eval LOCAL_$@_PATH := $(PACKAGES_FOLDER)/components-$(name))
+	@$(eval LOCAL_$@_PATH := $(PACKAGES_FOLDER)/components-$(name))
 	@mkdir -p $(LOCAL_$@_PATH)
 	@cd $(LOCAL_$@_PATH) && $(YO) $(name)
 
 ## Utilities
 ### Usage: make utils name=utilsName
 utils: node_modules
-	$(eval LOCAL_$@_PATH := $(PACKAGES_FOLDER)/utils-$(name))
+	@$(eval LOCAL_$@_PATH := $(PACKAGES_FOLDER)/utils-$(name))
 	@mkdir -p $(LOCAL_$@_PATH)
 	@cd $(LOCAL_$@_PATH) && $(YO) $(name)
 
+# Cleanup
+clean:
+	@rm -rf node_modules
 
 ####################
 # Available targets

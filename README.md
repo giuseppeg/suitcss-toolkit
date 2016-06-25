@@ -8,7 +8,7 @@ A toolkit of UI components and utilities developed following the [SUIT's design 
 
 ```bash
 git clone https://github.com/giuseppeg/suitcss-toolkit.git
-cd suitcss-toolkig
+cd suitcss-toolkit
 npm i
 ```
 

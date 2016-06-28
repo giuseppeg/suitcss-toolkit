@@ -21,18 +21,22 @@ node_modules: package.json
 
 install: node_modules
 
-bootstrap: node_modules
-	@$(LERNA) bootstrap
+bootstrap:
+	@$(LERNA) exec -- npm i
 
 # Cleanup
 
 clean:
 	@rm -rf node_modules
+	@rm -rf packages/**/node_modules
 
 # Testing
 
-test: bootstrap
+test-base:
 	@$(LERNA) run test
+
+test: node_modules bootstrap test-base
+test-ci: bootstrap test-base
 
 # Publishing
 
@@ -62,5 +66,5 @@ utils: node_modules
 
 .PHONY: install bootstrap clean
 .PHONY: publish
-.PHONY: test
+.PHONY: test test-ci
 .PHONY: component utils

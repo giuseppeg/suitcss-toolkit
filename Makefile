@@ -8,6 +8,7 @@ BIN := $(shell pwd)/node_modules/.bin
 PACKAGES_FOLDER ?= packages
 
 # applications
+LERNA ?= $(BIN)/lerna
 YO ?= $(BIN)/yo suit
 
 
@@ -19,6 +20,25 @@ node_modules: package.json
 	@npm i
 
 install: node_modules
+
+bootstrap: node_modules
+	@$(LERNA) bootstrap
+
+# Cleanup
+
+clean:
+	@rm -rf node_modules
+
+# Testing
+
+test: bootstrap
+	@$(LERNA) run test
+
+# Publishing
+
+publish:
+	@git pull --rebase
+	@$(LERNA) publish --independent --only-explicit-updates
 
 # Scaffolding
 
@@ -36,12 +56,11 @@ utils: node_modules
 	@mkdir -p $(LOCAL_$@_PATH)
 	@cd $(LOCAL_$@_PATH) && $(YO) $(name)
 
-# Cleanup
-clean:
-	@rm -rf node_modules
 
 ####################
 # Available targets
 
-.PHONY: install
+.PHONY: install bootstrap clean
+.PHONY: publish
+.PHONY: test
 .PHONY: component utils

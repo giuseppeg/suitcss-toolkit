@@ -17,12 +17,12 @@ YO ?= $(BIN)/yo suit
 
 node_modules: package.json
 	@npm prune
-	@npm i
+	@npm i --global-style
 
 install: node_modules
 
 bootstrap:
-	@$(LERNA) exec -- npm i
+	@$(LERNA) exec -- npm i --global-style
 
 # Cleanup
 

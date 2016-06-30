@@ -8,6 +8,7 @@ BIN := $(shell pwd)/node_modules/.bin
 PACKAGES_FOLDER ?= packages
 
 # applications
+LERNA ?= $(BIN)/lerna
 YO ?= $(BIN)/yo suit
 
 
@@ -16,9 +17,32 @@ YO ?= $(BIN)/yo suit
 
 node_modules: package.json
 	@npm prune
-	@npm i
+	@npm i --global-style
 
 install: node_modules
+
+bootstrap:
+	@$(LERNA) exec -- npm i --global-style
+
+# Cleanup
+
+clean:
+	@rm -rf node_modules
+	@rm -rf packages/**/node_modules
+
+# Testing
+
+test-base:
+	@$(LERNA) run test
+
+test: node_modules bootstrap test-base
+test-ci: bootstrap test-base
+
+# Publishing
+
+publish:
+	@git pull --rebase
+	@$(LERNA) publish --independent --only-explicit-updates
 
 # Scaffolding
 
@@ -36,12 +60,11 @@ utils: node_modules
 	@mkdir -p $(LOCAL_$@_PATH)
 	@cd $(LOCAL_$@_PATH) && $(YO) $(name)
 
-# Cleanup
-clean:
-	@rm -rf node_modules
 
 ####################
 # Available targets
 
-.PHONY: install
+.PHONY: install bootstrap clean
+.PHONY: publish
+.PHONY: test test-ci
 .PHONY: component utils

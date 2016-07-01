@@ -4,12 +4,25 @@
 # Node modules bin folder
 ## N.B. it holds the absolute path
 BIN := $(shell pwd)/node_modules/.bin
+export PATH := $(BIN):$(PATH)
 
 PACKAGES_FOLDER ?= packages
+SCRIPTS_FOLDER ?= scripts
+PKG_JSON_FILES := $(shell \
+	find . \
+		-not \( -path './package.json' -prune \) \
+		-not \( -path './.git' -prune \) \
+		-not \( -path './node_modules' -prune \) \
+		-not \( -path './packages/**/node_modules' -prune \) \
+		-type f \
+		-name 'package.json' \
+)
 
 # applications
 LERNA ?= $(BIN)/lerna
 YO ?= $(BIN)/yo suit
+SHARED_DEPENDENCIES ?= $(SCRIPTS_FOLDER)/shared-dependencies.js
+
 
 
 ##########
@@ -32,11 +45,20 @@ clean:
 
 # Testing
 
+test-ci:
+	@tar --exclude=temp.tar -cf temp.tar .
+	@mkdir -p temp
+	@tar -xf temp.tar -C temp/
+	@cd temp && make shared && npm i && make bootstrap test-base
+	@rm -rf temp*
+
+shared: $(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
+	@$(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
+
 test-base:
 	@$(LERNA) run test
 
 test: node_modules bootstrap test-base
-test-ci: bootstrap test-base
 
 # Publishing
 
@@ -64,7 +86,7 @@ utils: node_modules
 ####################
 # Available targets
 
-.PHONY: install bootstrap clean
+.PHONY: install clean
 .PHONY: publish
 .PHONY: test test-ci
 .PHONY: component utils

@@ -4,5 +4,9 @@
     "generator-suit": "^1.0.2",
     "yo": "^1.8.4",
     "lerna": "2.0.0-beta.23"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "object-assign-deep": "0.0.4"
   }
 }

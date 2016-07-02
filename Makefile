@@ -67,7 +67,7 @@ test-ci:
 
 publish:
 	@git pull --rebase
-	@$(LERNA) publish --independent --only-explicit-updates
+	@$(LERNA) publish --only-explicit-updates
 
 # Scaffolding
 

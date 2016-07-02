@@ -1,19 +1,12 @@
 #!/usr/bin/env node
 
-var assign = require('object-assign-deep');
-var exec = require('child_process').exec;
+var assign = require('object-assign');
 var fs = require('fs');
-var mkdirp = require('mkdirp');
 var path = require('path');
 
 var basePath = path.join(__dirname, '..');
 
-var globalPackageJson = {
-  path: './package.json',
-  content: require(path.join(basePath, '/package.json'))
-};
-
-function getPackagesJson(fileList) {
+function getPackagesJson(basePath, fileList) {
   var paths = fileList
     .filter(function (p) {
       return path.basename(p) === 'package.json';
@@ -22,105 +15,94 @@ function getPackagesJson(fileList) {
       return p.replace(/\.\//, '');
     });
 
-  return {
-    paths: paths,
-    contents: paths.reduce(function (target, pkgPath) {
-      target[pkgPath] = require(path.join(basePath, pkgPath));
-      return target;
-    }, {})
-  };
+  return paths.map(function (pkgPath) {
+    return {
+      path: pkgPath,
+      content: require(path.join(basePath, pkgPath))
+    };
+  });
 }
+
+var globalPackageJson = getPackagesJson(
+  basePath,
+  ['package.json']
+)[0];
 
 var packagesJson = getPackagesJson(
-  process.argv
-    .splice(2, process.argv.length)
+  basePath,
+  process.argv.splice(2, process.argv.length)
 );
 
-var globalDependencies = globalPackageJson.content.dependencies || {};
-var globalDevDependencies = globalPackageJson.content.devDependencies || {};
-
-function extractGlobalDependencies(pkgName, type, deps, glob, dest) {
-  var dest = assign({}, dest);
-  Object.keys(deps)
-    .forEach(function (depName) {
-      var depVer = deps[depName];
-      if (!dest.local[pkgName]) {
-        dest.local[pkgName] = {};
-      }
-      if (!dest.local[pkgName][type]) {
-        dest.local[pkgName][type] = {};
-      }
-      if (
-        glob[depName] &&
-        glob[depName] != depVer
-      ) {
-        dest.local[pkgName][type][depName] = depVer;
-        return;
-      }
-      dest.global[type][depName] = depVer;
-      if (!dest.local[pkgName].link) {
-        dest.local[pkgName].link = [];
-      }
-      dest.local[pkgName].link.push(depName);
-    });
-  return dest;
+if (!packagesJson.length) {
+  throw new Error('You must provide a list of paths to `package.json` files.');
 }
 
-var resolved = packagesJson.paths
-  .reduce(function (dest, pkgName) {
-    var pkgContent = packagesJson.contents[pkgName];
-    var dependencies = pkgContent.dependencies || {};
-    var devDependencies = pkgContent.devDependencies || {};
+function getNewDeps(deps, globDeps) {
+  return Object.keys(deps)
+    .reduce(function (dest, depName) {
+      var depVer = deps[depName];
+      if (
+        globDeps[depName] &&
+        globDeps[depName] != depVer
+      ) {
+        dest.local[depName] = depVer;
+      } else {
+        dest.glob[depName] = depVer;
+      }
+      return dest;
+    }, { glob: {}, local: {} });
+}
 
-    dest = extractGlobalDependencies(
-      pkgName,
-      'dependencies',
-      dependencies,
-      globalDependencies,
-      dest
-    );
+var resolved = packagesJson
+  .reduce(function (fin, pkgInfo) {
+    var pkgPath = pkgInfo.path;
+    var pkgJson = pkgInfo.content;
+    var deps = pkgJson.dependencies || {};
+    var devDeps = pkgJson.devDependencies || {};
 
-    dest = extractGlobalDependencies(
-      pkgName,
-      'devDependencies',
-      devDependencies,
-      globalDevDependencies,
-      dest
-    );
+    var newDeps = getNewDeps(deps, fin.glob.deps);
+    var newDevDeps = getNewDeps(devDeps, fin.glob.devDeps);
+    var newPkgJson = assign({}, pkgJson);
+    newPkgJson.dependencies = newDeps.local;
+    newPkgJson.devDependencies = newDevDeps.local;
 
-    return dest;
+    return {
+      glob: {
+        deps: assign({}, fin.glob.deps, newDeps.glob),
+        devDeps: assign({}, fin.glob.devDeps, newDevDeps.glob)
+      },
+      local: fin.local.concat([{
+        path: pkgPath,
+        content: newPkgJson
+      }])
+    };
   }, {
-    global: {
-      dependencies: assign({}, globalPackageJson.content.dependencies),
-      devDependencies: assign({}, globalPackageJson.content.devDependencies)
+    glob: {
+      deps: assign({}, globalPackageJson.content.dependencies),
+      devDeps: assign({},  globalPackageJson.content.devDependencies)
     },
-    local: {}
+    local: []
   });
+
+// root package.json
 
 var newGlobalPackageJson = assign({}, globalPackageJson);
-newGlobalPackageJson.content.dependencies = resolved.global.dependencies;
-newGlobalPackageJson.content.devDependencies = resolved.global.devDependencies;
+newGlobalPackageJson.content.dependencies = resolved.glob.deps;
+newGlobalPackageJson.content.devDependencies = resolved.glob.devDeps;
 
-var newPackagesJson = assign({}, packagesJson);
-Object.keys(resolved.local)
-  .forEach(function (pkgPath) {
-    newPackagesJson.contents[pkgPath].dependencies = resolved.local[pkgPath].dependencies;
-    newPackagesJson.contents[pkgPath].devDependencies = resolved.local[pkgPath].devDependencies;
-  });
+fs.writeFile(
+  path.join(basePath, newGlobalPackageJson.path),
+  JSON.stringify(newGlobalPackageJson.content)
+);
 
-fs.writeFileSync(path.join(basePath, newGlobalPackageJson.path), JSON.stringify(newGlobalPackageJson.content));
+// packages/**/package.json
 
-newPackagesJson.paths.forEach(function (pkgPath) {
-  fs.writeFileSync(path.join(basePath, pkgPath), JSON.stringify(newPackagesJson.contents[pkgPath]));
-  resolved.local[pkgPath].link.forEach(function (pkgName) {
-    mkdirp(path.join(path.dirname(pkgPath), 'node_modules'), function (err) {
-      if (err) { return; }
-      var installedPkgPath = path.join('node_modules', pkgName);
-      exec([
-        'ln -s',
-        path.join(basePath, installedPkgPath),
-        path.join(path.dirname(pkgPath), installedPkgPath)
-      ].join(' '));
-    });
-  });
-});
+resolved.local.forEach(function (pkgInfo) {
+  var pkgPath = pkgInfo.path;
+  var pkgJson = pkgInfo.content;
+
+  fs.writeFile(
+    path.join(basePath, pkgPath),
+    JSON.stringify(pkgJson)
+  );
+})

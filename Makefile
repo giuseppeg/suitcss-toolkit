@@ -34,7 +34,13 @@ node_modules: package.json
 
 install: node_modules
 
+shared-deps: $(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
+	@$(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
+
 bootstrap:
+	@$(LERNA) bootstrap
+
+bootstrap-shared:
 	@$(LERNA) exec -- npm i --global-style
 
 # Cleanup
@@ -45,20 +51,17 @@ clean:
 
 # Testing
 
-test-ci:
-	@tar --exclude=temp.tar -cf temp.tar .
-	@mkdir -p temp
-	@tar -xf temp.tar -C temp/
-	@cd temp && make shared && npm i && make bootstrap test-base
-	@rm -rf temp*
-
-shared: $(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
-	@$(SHARED_DEPENDENCIES) $(PKG_JSON_FILES)
-
 test-base:
 	@$(LERNA) run test
 
 test: node_modules bootstrap test-base
+
+test-ci:
+	@tar --exclude=temp.tar -cf temp.tar .
+	@mkdir -p temp
+	@tar -xf temp.tar -C temp/
+	@cd temp && make shared-deps && npm i && make bootstrap-shared test-base
+	@rm -rf temp*
 
 # Publishing
 
@@ -86,7 +89,7 @@ utils: node_modules
 ####################
 # Available targets
 
-.PHONY: install clean
+.PHONY: install clean bootstrap bootstrap-shared
 .PHONY: publish
 .PHONY: test test-ci
 .PHONY: component utils

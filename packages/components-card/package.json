@@ -10,6 +10,7 @@
     "lib"
   ],
   "devDependencies": {
+    "stylelint": "^6.8.0",
     "stylelint-config-suitcss": "^6.0.0",
     "suitcss-components-test": "*",
     "suitcss-preprocessor": "^2.0.0"

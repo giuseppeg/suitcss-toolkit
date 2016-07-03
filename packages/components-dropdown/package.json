@@ -17,6 +17,7 @@
     "computed-style": "^0.3.0",
     "hyperscript": "^1.4.7",
     "postcss-pseudo-classes": "^0.1.0",
+    "stylelint": "^6.8.0",
     "stylelint-config-suitcss": "^6.0.0",
     "suitcss-components-test": "*",
     "suitcss-preprocessor": "^2.0.0",

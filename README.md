@@ -1,5 +1,7 @@
 # SUIT CSS Toolkit
 
+[![Build Status](https://secure.travis-ci.org/giuseppeg/suitcss-toolkit.svg?branch=master)](http://travis-ci.org/giuseppeg/suitcss-toolkit)
+
 A toolkit of UI components and utilities developed following the [SUIT's design principles](https://github.com/suitcss/suit/tree/master/doc).
 
 *Toolkit* is developed as a mono-repository and managed with [lernajs](https://lernajs.io/).

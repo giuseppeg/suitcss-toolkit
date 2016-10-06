@@ -1,7 +1,7 @@
 {
   "name": "suitcss-components-form",
   "description": "Component CSS for forms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "style": "index.css",
   "files": [

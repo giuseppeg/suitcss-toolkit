@@ -1,0 +1,12 @@
+/** framework base */
+
+@import "../../../base";
+
+/** theme variables */
+
+@import "../variables";
+
+html,
+body {
+  height: 100%;
+}

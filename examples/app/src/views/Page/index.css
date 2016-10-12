@@ -1,0 +1,52 @@
+/** @define Page */
+
+:root {
+  --Page-backgroundColor: transparent;
+  --Page-color: currentColor;
+  --Page-fontFamily: inherit;
+  --Page-fontSize: 1em;
+  --Page-fontWeight: normal;
+  --Page-padding: 1.2rem;
+
+  --Page-container-maxWidth: 640px;
+
+  --Page-title-color: inherit;
+  --Page-title-fontFamily: inherit;
+  --Page-title-fontSize: 2em;
+  --Page-title-fontWeight: normal;
+  --Page-title-lineHeight: inherit;
+
+  --Page-main-margin: 2rem auto;
+}
+
+.Page {
+  background-color: var(--Page-backgroundColor);
+  color: var(--Page-color);
+  font-family: var(--Page-fontFamily);
+  font-size: var(--Page-fontSize);
+  min-height: 100%;
+  padding: var(--Page-padding);
+}
+
+.Page-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--Page-container-maxWidth);
+  width: 100%;
+}
+
+.Page-title {
+  color: var(--Page-title-color);
+  font-family: var(--Page-title-fontFamily);
+  font-size: var(--Page-title-fontSize);
+  font-weight: var(--Page-title-fontWeight);
+  line-height: var(--Page-title-lineHeight);
+  text-rendering: optimizeLegibility;
+}
+
+.Page-main {
+  margin: var(--Page-main-margin);
+  width: 100%;
+}

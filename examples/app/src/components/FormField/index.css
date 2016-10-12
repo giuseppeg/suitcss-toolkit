@@ -1,0 +1,25 @@
+/** @define FormField */
+
+:root {
+  --FormField-fontFamily: inherit;
+  --FormField-fontSize: 1rem;
+  --FormField-fontWeight: normal;
+
+  --FormField-input-borderWidth: 1px;
+  --FormField-input-borderColor: currentColor;
+  --FormField-input-color: currentColor;
+  --FormField-input-padding: 0.5rem 1rem;
+}
+
+.FormField {
+  display: block;
+  font-size: var(--FormField-fontSize);
+  width: 100%;
+}
+
+.FormField-input {
+  color: var(--FormField-input-color);
+  display: block;
+  padding: var(--FormField-input-padding);
+  width: 100%;
+}

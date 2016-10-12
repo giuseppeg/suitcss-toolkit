@@ -1,0 +1,8 @@
+:root {
+  --font-family-sansSerif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --font-size-small: 0.8rem;
+  --font-size-normal: 1.5rem;
+  --font-size-medium: 3rem;
+  --font-size-large: 6rem;
+}

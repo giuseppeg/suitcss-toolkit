@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "name": "app",
+  "version": "0.1.0",
+  "description": "TodoMVC styled with SUITCSS",
+  "main": "index.css",
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "css, html"
+    }
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir -p dist",
+    "build": "npm run build:html && npm run build:css",
+    "build:html": "cp src/index.html dist/index.html",
+    "prebuild:css": "async-to-gen buildcss.js > __buildcss.js",
+    "build:css": "node __buildcss.js",
+    "postbuild:css": "rm __buildcss.js",
+    "test": "exit 0",
+    "watch": "npm-watch"
+  },
+  "keywords": [
+    "suitcss",
+    "app",
+    "global",
+    "styles"
+  ],
+  "author": "Giuseppe Gurgone",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "suitcss-base": "^2.0.0"
+  },
+  "devDependencies": {
+    "async-to-gen": "^1.1.4",
+    "fs-readfile-promise": "^3.0.0",
+    "fs-writefile-promise": "^1.0.3",
+    "glob-fs": "^0.1.6",
+    "glob-promise": "^1.0.6",
+    "mkdirp-promise": "^3.0.1",
+    "npm-watch": "^0.1.6",
+    "suitcss-preprocessor": "git://github.com/suitcss/preprocessor.git#6fe1ec161eade4267cc5102b12d90498a9a91352"
+  }
+}

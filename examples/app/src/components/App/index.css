@@ -1,0 +1,28 @@
+/** @define App */
+
+:root {
+  --App-color: currentColor;
+  --App-backgroundColor: transparent;
+  --App-borderWidth: 1px;
+  --App-borderColor: currentColor;
+  --App-fontFamily: inherit;
+  --App-fontSize: 1rem;
+}
+
+.App {
+  background-color: var(--App-backgroundColor);
+  border: var(--App-borderWidth) solid var(--App-borderColor);
+  color: var(--App-color);
+  font-family: var(--App-fontFamily);
+  font-size: var(--App-fontSize);
+  width: 100%;
+}
+
+.App-addTodo {
+
+}
+
+.App-todos,
+.App-filters {
+  border-top: var(--App-borderWidth) solid var(--App-borderColor);
+}

@@ -1,0 +1,25 @@
+/** framework components */
+
+@import "../../../components";
+
+/** theme variables */
+
+@import "../variables";
+
+/** App */
+
+:root {
+  --App-backgroundColor: var(--color-light);
+  --App-borderColor: var(--color-grayDark);
+}
+
+/** FormField */
+
+:root {
+  --FormField-fontFamily: inherit;
+  --FormField-fontSize: var(--font-size-normal);
+  --FormField-fontWeight: inherit;
+
+  --FormField-input-borderWidth: 0;
+  --FormField-input-padding: var(--spacing-normal);
+}

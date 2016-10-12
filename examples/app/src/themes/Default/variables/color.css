@@ -1,0 +1,8 @@
+:root {
+  --color-dark: #4d4d4d;
+  --color-gray: #f5f5f5;
+  --color-grayDark: #e6e6e6;
+  --color-grayDarker: #777;
+  --color-light: #fff;
+  --color-brand: rgba(175, 47, 47, 0.15);
+}

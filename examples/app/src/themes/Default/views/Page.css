@@ -1,0 +1,26 @@
+/** Page view */
+
+@import "../../../views/Page";
+
+/** theme variables */
+
+@import "../variables";
+
+:root {
+  --Page-backgroundColor: var(--color-gray);
+  --Page-color: var(--color-dark);
+  --Page-fontFamily: var(--font-family-sansSerif);
+  --Page-fontSize: var(--font-size-normal);
+  --Page-fontWeight: 300;
+  --Page-padding: var(--spacing-medium) var(--spacing-normal);
+
+  --Page-container-maxWidth: 550px;
+
+  --Page-title-color: var(--color-brand);
+  --Page-title-fontFamily: inherit;
+  --Page-title-fontSize: var(--font-size-large);
+  --Page-title-fontWeight: 100;
+  --Page-title-lineHeight: 1;
+
+  --Page-main-margin: var(--spacing-small) auto var(--spacing-large);
+}
